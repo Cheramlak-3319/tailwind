@@ -4,6 +4,10 @@ import axios from "axios"
 type PersonalInfo = {
     id: number;
     name: string;
+    username: string;
+    email: string;
+    phone: string;
+    website: string;
 };
 const UserFiles = () => {
     const [data, setData] = useState<PersonalInfo[]>([])
@@ -23,19 +27,28 @@ const UserFiles = () => {
     },[])
   return (
     <div>
-        {data ? (
-            <ul>
-                {data.length > 0 ? (
-            <ul>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Website</th>
+                <th>Phone</th>
+                <th>User Name</th>
+            </tr>
+        </thead>
+        <tbody>
             {data.map((d) => (
-                <li key={d.id}>{d.name}</li>
+                <tr key={d.id}>
+                    <th>{d.id}</th>
+                    <th>{d.name}</th>
+                    <th>{d.email}</th>
+                    <th>{d.website}</th>
+                    <th>{d.phone}</th>
+                    <th>{d.website}</th>
+                </tr>
             ))}
-            </ul>
-        ) : (
-            <p>Loading...</p>
-        )}
-        </ul>
-      ): (<p>Loading...</p>)}
+        </tbody>
     </div>
   )
 }
