@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import {useState} from 'react'
 import { useForm, type SubmitHandler  } from "react-hook-form";
 
 
@@ -18,7 +18,7 @@ const ReactForm = () => {
     register,
     handleSubmit,
     watch,
-    formState: { errors },
+    formState: { errors, isSubmitting },
   } = useForm<FormData>({});
  
   const onSubmit : SubmitHandler<FormData> = (data:FormData) => {
@@ -51,11 +51,12 @@ const ReactForm = () => {
                 })}/>
             {errors.password && <div>{errors.password.message}</div>}
         </div>
-        <button>Submit</button>
+        <button disabled={isSubmitting}>Submit</button>
       </form>
       <div>
         <p>{nameValue}</p>
         <p>{emailValue}</p>
+        <p>{dataSumitted.password}</p>
         <p>{passwordValue}</p>
       </div>
     </div>
